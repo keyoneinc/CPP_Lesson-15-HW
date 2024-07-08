@@ -60,24 +60,50 @@ int main() {
 
 
     // task 3
+    //ifstream file("hw1.txt");
+
+    //if (file.is_open()) {
+    //    int a;
+    //    cout << "Enter a number: ";
+    //    cin >> a;
+
+    //    int number;
+    //    while (file >> number) {
+    //        if (number > a) {
+    //            cout << number << " ";
+    //        }
+    //    }
+    //    file.close();
+    //}
+    //else {
+    //    cout << "Error opening file" << endl;
+    //}
+
+
+    // task 4
     ifstream file("hw1.txt");
 
     if (file.is_open()) {
-        int a;
-        cout << "Enter a number: ";
-        cin >> a;
-
+        int array[13];
+        int i = 0;
         int number;
         while (file >> number) {
-            if (number > a) {
-                cout << number << " ";
+            array[i] = number;
+            ++i;
+        }
+
+        cout << "Positive numbers:" << endl;
+        for (int i = 0; i < 13; ++i) {
+            if (array[i] > 0) {
+                cout << array[i] << " ";
             }
         }
         file.close();
     }
     else {
-        cout << "Error opening file" << endl;
+        cout << "Error opening file hw1.txt" << endl;
     }
+
 
 
 
