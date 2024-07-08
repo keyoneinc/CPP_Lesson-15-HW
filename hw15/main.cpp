@@ -81,29 +81,56 @@ int main() {
 
 
     // task 4
-    ifstream file("hw1.txt");
+    //ifstream file("hw1.txt");
 
-    if (file.is_open()) {
-        int array[13];
-        int i = 0;
-        int number;
-        while (file >> number) {
-            array[i] = number;
-            ++i;
-        }
+    //if (file.is_open()) {
+    //    int array[13];
+    //    int i = 0;
+    //    int number;
+    //    while (file >> number) {
+    //        array[i] = number;
+    //        ++i;
+    //    }
 
-        cout << "Positive numbers:" << endl;
-        for (int i = 0; i < 13; ++i) {
-            if (array[i] > 0) {
-                cout << array[i] << " ";
+    //    cout << "Positive numbers:" << endl;
+    //    for (int i = 0; i < 13; ++i) {
+    //        if (array[i] > 0) {
+    //            cout << array[i] << " ";
+    //        }
+    //    }
+    //    file.close();
+    //}
+    //else {
+    //    cout << "Error opening file hw1.txt" << endl;
+    //}
+
+
+    //task 5
+    int excludedNumber;
+    cout << "Enter the excluded number: ";
+    cin >> excludedNumber;
+
+    ifstream inputFile("hw1.txt");
+    if (inputFile.is_open()) {
+        ofstream outputFile("5.txt");
+        if (outputFile.is_open()) {
+            int number;
+
+            while (inputFile >> number) {
+                if (number != excludedNumber) {
+                    outputFile << number << " ";
+                }
             }
+            outputFile.close();
         }
-        file.close();
+        else {
+            cout << "Error opening output file" << endl;
+        }
+        inputFile.close();
     }
     else {
-        cout << "Error opening file hw1.txt" << endl;
+        cout << "Error opening input file" << endl;
     }
-
 
 
 
