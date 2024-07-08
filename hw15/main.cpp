@@ -106,30 +106,54 @@ int main() {
 
 
     //task 5
-    int excludedNumber;
-    cout << "Enter the excluded number: ";
-    cin >> excludedNumber;
+    //int excludedNumber;
+    //cout << "Enter the excluded number: ";
+    //cin >> excludedNumber;
 
-    ifstream inputFile("hw1.txt");
-    if (inputFile.is_open()) {
-        ofstream outputFile("5.txt");
-        if (outputFile.is_open()) {
-            int number;
+    //ifstream inputFile("hw1.txt");
+    //if (inputFile.is_open()) {
+    //    ofstream outputFile("5.txt");
+    //    if (outputFile.is_open()) {
+    //        int number;
 
-            while (inputFile >> number) {
-                if (number != excludedNumber) {
-                    outputFile << number << " ";
-                }
-            }
-            outputFile.close();
+    //        while (inputFile >> number) {
+    //            if (number != excludedNumber) {
+    //                outputFile << number << " ";
+    //            }
+    //        }
+    //        outputFile.close();
+    //    }
+    //    else {
+    //        cout << "Error opening output file" << endl;
+    //    }
+    //    inputFile.close();
+    //}
+    //else {
+    //    cout << "Error opening input file" << endl;
+    //}
+
+
+    // task 6
+    ifstream inputFile1("hw1.txt");
+    ifstream inputFile2("hw2.txt");
+
+    if (inputFile1.is_open() && inputFile2.is_open()) {
+        ofstream outputFileSum("hwSum.txt");
+        ofstream outputFileMax("hwMax.txt");
+
+        int number1, number2;
+        while (inputFile1 >> number1 && inputFile2 >> number2) {
+            outputFileSum << number1 + number2 << " ";
+            outputFileMax << (number1 > number2 ? number1 : number2) << " ";
         }
-        else {
-            cout << "Error opening output file" << endl;
-        }
-        inputFile.close();
+
+        inputFile1.close();
+        inputFile2.close();
+        outputFileSum.close();
+        outputFileMax.close();
     }
     else {
-        cout << "Error opening input file" << endl;
+        cout << "Error opening input files" << endl;
     }
 
 
